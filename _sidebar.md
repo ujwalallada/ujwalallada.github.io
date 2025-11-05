@@ -1,3 +1,7 @@
-- [Home](README.md)
-- [Reset Windows Password](writeups/reset-windows-password-chntpw.md)
+<!-- _sidebar.md -->
+
+**🏠 Homelab**
+
+- [WireGuard on Proxmox (LXC attempt → VM plan)](writeups/wireguard-proxmox-container.md)
+
 
