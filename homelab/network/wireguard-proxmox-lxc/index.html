@@ -13,23 +13,25 @@
       
       
       
+        <link rel="prev" href="../../">
       
-        <link rel="next" href="homelab/">
+      
+        <link rel="next" href="../../../ctf/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
-        <title>auXploit Writes</title>
+        <title>WireGuard on Proxmox (LXC) - auXploit Writes</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-auxploit-writes" class="md-skip">
+        <a href="#homelab-remote-access-using-proxmox-wireguard-lxc-attempt" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="auXploit Writes" class="md-header__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
+    <a href="../../.." title="auXploit Writes" class="md-header__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              WireGuard on Proxmox (LXC)
             
           </span>
         </div>
@@ -221,11 +223,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -242,11 +242,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="homelab/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -268,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="ctf/" class="md-tabs__link">
+        <a href="../../../ctf/" class="md-tabs__link">
           
   
   
@@ -306,7 +308,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="auXploit Writes" class="md-nav__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
+    <a href="../../.." title="auXploit Writes" class="md-nav__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -333,19 +335,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -356,7 +349,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -365,6 +357,8 @@
       
   
   
+    
+  
   
   
     
@@ -380,22 +374,23 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="homelab/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -408,13 +403,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Homelab
@@ -427,8 +422,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -439,20 +436,21 @@
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
         
           
+          
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -465,7 +463,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             First Experiment with Containers
@@ -476,10 +474,32 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="homelab/network/wireguard-proxmox-lxc/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    WireGuard on Proxmox (LXC)
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -490,6 +510,107 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#objective" class="md-nav__link">
+    <span class="md-ellipsis">
+      Objective
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-proxmox-lxc-wireguard-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗 Architecture – Proxmox LXC WireGuard Setup
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-configs-lxc-attempt" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Configs (LXC Attempt)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#client-template-androidlaptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Client template (Android/Laptop):
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-highlights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Highlights
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#root-cause" class="md-nav__link">
+    <span class="md-ellipsis">
+      Root Cause
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Decision
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#future-design-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      Future (Design Only)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -542,7 +663,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="ctf/" class="md-nav__link ">
+            <a href="../../../ctf/" class="md-nav__link ">
               
   
   
@@ -591,9 +712,67 @@
   
 
 
-<h1 id="welcome-to-auxploit-writes">   W e l c o m e   t o   a u X p l o i t   W r i t e s </h1>
-<p> 
- </p>
+<h1 id="homelab-remote-access-using-proxmox-wireguard-lxc-attempt">🔐 Homelab Remote Access using Proxmox + WireGuard (LXC Attempt)</h1>
+<blockquote>
+<p>Portfolio documentation: objective, architecture, configs, troubleshooting, root-cause, and final decision to move WG server from LXC → Debian VM.</p>
+</blockquote>
+<h2 id="objective">Objective</h2>
+<ul>
+<li>Secure remote access to my homelab using WireGuard.</li>
+</ul>
+<h2 id="environment">Environment</h2>
+<ul>
+<li>Proxmox Host (static): <strong>192.168.1.10</strong></li>
+<li>Debian VPN server (LXC, attempt 1): <strong>192.168.1.20</strong></li>
+<li>Router/Gateway: <strong>192.168.1.1</strong></li>
+<li>LAN: <strong>192.168.1.0/24</strong></li>
+<li>WireGuard subnet: <strong>10.8.0.0/24</strong></li>
+<li>Port forward: <strong>UDP 51820 → 192.168.1.20</strong></li>
+<li>Public IPv4 present; PVE firewall disabled for tests.</li>
+</ul>
+<h2 id="architecture-proxmox-lxc-wireguard-setup">🏗 Architecture – Proxmox LXC WireGuard Setup</h2>
+<p>Here is the network flow for my initial WireGuard setup using a Debian LXC on Proxmox:</p>
+<p><img alt="WireGuard Architecture – Proxmox LXC" src="../../../assets/homelab/Home_Lab.png" width="50%" /></p>
+<h2 id="key-configs-lxc-attempt">Key Configs (LXC Attempt)</h2>
+<p>Server /etc/wireguard/wg0.conf (minimal, IPv4):</p>
+<p>[Interface]
+Address    = 10.8.0.1/24
+ListenPort = 51820
+PrivateKey = <server_private_key>
+PostUp   = iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+PostDown = iptables -t nat -D POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE</p>
+<p>[Peer]  # au-phone
+PublicKey = <au_phone_public>
+AllowedIPs = 10.8.0.2/32
+PersistentKeepalive = 25</p>
+<p>[Peer]  # au-worklaptop
+PublicKey = <au_worklaptop_public>
+AllowedIPs = 10.8.0.3/32
+PersistentKeepalive = 25</p>
+<h2 id="client-template-androidlaptop">Client template (Android/Laptop):</h2>
+<p>[Interface]
+PrivateKey = <client_private>
+Address = 10.8.0.2/32
+DNS = 1.1.1.1</p>
+<p>[Peer]
+PublicKey = <server_public>
+Endpoint = <PUBLIC_IP>:51820
+AllowedIPs = 0.0.0.0/0, ::/0
+PersistentKeepalive = 25</p>
+<h2 id="troubleshooting-highlights">Troubleshooting Highlights</h2>
+<p>Verified: ss -lunp | grep 51820 (WG listening), sysctl net.ipv4.ip_forward=1, MASQUERADE present, router port forward correct, public IPv4 present, PVE firewall disabled.</p>
+<p>tcpdump path checks:</p>
+<p>Host vmbr0: check UDP/51820 arrives from WAN.</p>
+<p>Host veth104i0: check forwarding into the CT.</p>
+<p>Inside LXC eth0: check packets inside CT.</p>
+<p>Outcome: no reliable handshake at the CT boundary → containerization/kernel/capability constraints, not WG config.</p>
+<h2 id="root-cause">Root Cause</h2>
+<p>Running a WG server inside LXC adds kernel/capability hurdles (module loading, /dev/net/tun, CAP_NET_ADMIN, AppArmor/cgroup constraints, bridge/veth path). Result: handshakes fail despite correct configs.</p>
+<h2 id="decision">Decision</h2>
+<p>Migrate WG server to a Debian VM on Proxmox (full kernel control, simpler routing/NAT, production-like).</p>
+<h2 id="future-design-only">Future (Design Only)</h2>
+<p>Build Debian VM for WG; move port forward to VM.</p>
+<p>After NIC (Intel i350-T2/T4) install: introduce pfSense as edge firewall/router; add VLANs, DNS control, reverse proxy.</p>
 
 
 
@@ -673,10 +852,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "toc.follow", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "toc.follow", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>

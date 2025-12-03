@@ -1,0 +1,27 @@
+/* Better spacing for navigation */
+.md-nav__item {
+    padding: 0.2rem 0;
+}
+
+/* Better readability for code blocks */
+.highlight {
+    margin: 1em 0;
+}
+
+/* Improve section headers */
+.md-typeset h2 {
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest);
+    padding-bottom: 0.5rem;
+}
+
+/* Better spacing for lists */
+.md-typeset ul, .md-typeset ol {
+    margin: 1em 0;
+}
+
+/* Improve table styling */
+.md-typeset table:not([class]) {
+    display: table;
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,.05);
+}

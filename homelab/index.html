@@ -13,23 +13,25 @@
       
       
       
+        <link rel="prev" href="..">
       
-        <link rel="next" href="homelab/">
+      
+        <link rel="next" href="network/wireguard-proxmox-lxc/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
-        <title>auXploit Writes</title>
+        <title>Homelab Projects - auXploit Writes</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -48,9 +50,9 @@
       
     
     
-      <link rel="stylesheet" href="stylesheets/extra.css">
+      <link rel="stylesheet" href="../stylesheets/extra.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#welcome-to-auxploit-writes" class="md-skip">
+        <a href="#homelab-projects" class="md-skip">
           Skip to content
         </a>
       
@@ -90,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="auXploit Writes" class="md-header__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
+    <a href=".." title="auXploit Writes" class="md-header__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Homelab Projects
             
           </span>
         </div>
@@ -221,11 +223,9 @@
   
   
   
-    
   
-  
-    <li class="md-tabs__item md-tabs__item--active">
-      <a href="." class="md-tabs__link">
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -242,11 +242,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="homelab/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -268,7 +270,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="ctf/" class="md-tabs__link">
+        <a href="../ctf/" class="md-tabs__link">
           
   
   
@@ -306,7 +308,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="auXploit Writes" class="md-nav__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
+    <a href=".." title="auXploit Writes" class="md-nav__button md-logo" aria-label="auXploit Writes" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -333,19 +335,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -356,7 +349,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -365,6 +357,8 @@
       
   
   
+    
+  
   
   
     
@@ -380,22 +374,23 @@
     
     
       
+        
+        
+      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="homelab/" class="md-nav__link ">
+            <a href="./" class="md-nav__link md-nav__link--active">
               
   
   
@@ -408,13 +403,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link md-nav__link--active" for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Homelab
@@ -440,10 +435,13 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
@@ -452,7 +450,7 @@
         <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -479,7 +477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="homelab/network/wireguard-proxmox-lxc/" class="md-nav__link">
+      <a href="network/wireguard-proxmox-lxc/" class="md-nav__link">
         
   
   
@@ -542,7 +540,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="ctf/" class="md-nav__link ">
+            <a href="../ctf/" class="md-nav__link ">
               
   
   
@@ -591,9 +589,38 @@
   
 
 
-<h1 id="welcome-to-auxploit-writes">   W e l c o m e   t o   a u X p l o i t   W r i t e s </h1>
-<p> 
- </p>
+<h1 id="homelab-projects">Homelab Projects</h1>
+<p>Welcome to my homelab documentation. Here I document infrastructure experiments, security implementations, and lessons learned from building a production-like home environment.</p>
+<h2 id="current-projects">Current Projects</h2>
+<h4 id="wireguard-vpn-on-proxmox-lxc"><a href="network/wireguard-proxmox-lxc/">WireGuard VPN on Proxmox (LXC)</a></h4>
+<p>Detailed troubleshooting of running WireGuard in Proxmox LXC containers, including packet-level analysis with tcpdump and architectural decision-making and it's failure</p>
+<p><strong>Status:</strong> LXC experiment complete → VM migration planned<br />
+<strong>Skills:</strong> <code>WireGuard</code> <code>Proxmox</code> <code>Linux Networking</code> <code>tcpdump</code> <code>iptables</code> <code>NAT</code></p>
+<hr />
+<h2 id="coming-soon">Coming Soon</h2>
+<ul>
+<li><strong>WireGuard VM Migration</strong> - Moving VPN server to dedicated Opensense</li>
+<li><strong>pfSense Edge Firewall</strong> - Enterprise firewall with VLANs and IDS/IPS</li>
+</ul>
+<hr />
+<h2 id="lab-environment">Lab Environment</h2>
+<p><strong>Current Setup:</strong>
+- <strong>Proxmox Host:</strong> 192.168.1.10
+- <strong>LAN:</strong> 192.168.1.0/24
+- <strong>WireGuard Subnet:</strong> 10.8.0.0/24</p>
+<p><strong>Planned Upgrades:</strong>
+- Intel i350-T4 quad-port NIC
+- Opensense</p>
+<hr />
+<h2 id="learning-objectives">Learning Objectives</h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Proxmox LXC vs VM trade-offs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> WireGuard protocol and configuration</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Linux packet routing and NAT</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Network troubleshooting with tcpdump</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> pfSense advanced routing</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Infrastructure as Code (Ansible)</li>
+</ul>
 
 
 
@@ -673,10 +700,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "toc.follow", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.path", "navigation.top", "navigation.indexes", "toc.follow", "toc.integrate", "search.suggest", "search.highlight", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
     
   </body>
