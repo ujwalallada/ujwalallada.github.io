@@ -1,1 +1,27 @@
-site_name: My Docs
+site_name: auXploit Writes
+theme:
+  name: material
+  features:
+    - navigation.instant
+    - navigation.sections
+    - content.code.copy
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.tabbed
+  - pymdownx.highlight
+  - pymdownx.tasklist
+  - attr_list
+
+# Mermaid support (Material works fine with this)
+extra_javascript:
+  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+
+nav:
+  - Home: index.md
+  - Homelab:
+      - "WireGuard on Proxmox (LXC attempt → VM plan)": writeups/wireguard-proxmox-container.md
+

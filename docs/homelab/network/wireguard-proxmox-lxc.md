@@ -18,7 +18,7 @@
 
 Here is the network flow for my initial WireGuard setup using a Debian LXC on Proxmox:
 
-![WireGuard Architecture – Proxmox LXC](../assets/Home_Lab.png)
+![WireGuard Architecture – Proxmox LXC](../../assets/homelab/Home_Lab.png){width=50%}
 
 
 ## Key Configs (LXC Attempt)
