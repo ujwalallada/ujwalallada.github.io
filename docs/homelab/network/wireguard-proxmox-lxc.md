@@ -75,9 +75,4 @@ Running a WG server inside LXC adds kernel/capability hurdles (module loading, /
 
 Migrate WG server to a Debian VM on Proxmox (full kernel control, simpler routing/NAT, production-like).
 
-## Future (Design Only)
-
-Build Debian VM for WG; move port forward to VM.
-
-After NIC (Intel i350-T2/T4) install: introduce pfSense as edge firewall/router; add VLANs, DNS control, reverse proxy.
-
+**Status:** Failed Approach - Moving to OPNsense 
