@@ -13,10 +13,10 @@
       
       
       
-        <link rel="prev" href="../../">
+        <link rel="prev" href="../wireguard-proxmox-lxc/">
       
       
-        <link rel="next" href="../wireguard-proxmox-vm/">
+        <link rel="next" href="../../../ctf/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>WireGuard on Proxmox (LXC) - auXploit Writes</title>
+        <title>WireGuard on Proxmox Debian VM - auXploit Writes</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wireguard-vpn-setup-on-debian-container-lxc-attempt" class="md-skip">
+        <a href="#wireguard-vpn-setup-on-debian-vm" class="md-skip">
           Skip to content
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              WireGuard on Proxmox (LXC)
+              WireGuard on Proxmox Debian VM
             
           </span>
         </div>
@@ -476,6 +476,29 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../wireguard-proxmox-lxc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    WireGuard on Proxmox (LXC)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -493,7 +516,7 @@
   
   
   <span class="md-ellipsis">
-    WireGuard on Proxmox (LXC)
+    WireGuard on Proxmox Debian VM
     
   </span>
   
@@ -506,7 +529,7 @@
   
   
   <span class="md-ellipsis">
-    WireGuard on Proxmox (LXC)
+    WireGuard on Proxmox Debian VM
     
   </span>
   
@@ -529,72 +552,153 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#objective" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
-      Objective
+      Overview
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#environment" class="md-nav__link">
+  <a href="#system-architecture-attempted" class="md-nav__link">
     <span class="md-ellipsis">
-      Environment
+      System Architecture (Attempted)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#architecture-proxmox-lxc-wireguard-setup" class="md-nav__link">
+  <a href="#setup-process" class="md-nav__link">
     <span class="md-ellipsis">
-      🏗 Architecture – Proxmox LXC WireGuard Setup
+      Setup Process
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup Process">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-install-wireguard" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Install WireGuard
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#key-configs-lxc-attempt" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#2-enable-ip-forwarding" class="md-nav__link">
     <span class="md-ellipsis">
-      Key Configs (LXC Attempt)
+      2. Enable IP Forwarding
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#client-template-androidlaptop" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#3-generate-keys" class="md-nav__link">
     <span class="md-ellipsis">
-      Client template (Android/Laptop):
+      3. Generate Keys
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting-highlights" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#4-configure-the-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting Highlights
+      4. Configure the Server
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#root-cause" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#5-configure-firewall" class="md-nav__link">
     <span class="md-ellipsis">
-      Root Cause
+      5. Configure Firewall
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#6-configure-clients" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Configure Clients
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#decision" class="md-nav__link">
+  <a href="#the-challenges-i-faced" class="md-nav__link">
     <span class="md-ellipsis">
-      Decision
+      The Challenges I Faced
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Challenges I Faced">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenge-1-router-firewall-blocking-vpn" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge 1: Router Firewall Blocking VPN
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenge-2-ipv6-duckdns-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenge 2: IPv6 + DuckDNS Approach
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-solution-moving-to-opnsense" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Solution: Moving to OPNsense
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The Solution: Moving to OPNsense">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-opnsense" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why OPNsense?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
     </span>
   </a>
   
@@ -604,29 +708,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../wireguard-proxmox-vm/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    WireGuard on Proxmox Debian VM
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -728,65 +809,170 @@
   
 
 
-<h1 id="wireguard-vpn-setup-on-debian-container-lxc-attempt">🔐 WireGuard VPN Setup on Debian Container (LXC Attempt)</h1>
-<blockquote>
-<p>Portfolio documentation: objective, architecture, configs, troubleshooting, root-cause, and final decision to move WG server from LXC → Debian VM.</p>
-</blockquote>
-<h2 id="objective">Objective</h2>
-<ul>
-<li>Secure remote access to my homelab using WireGuard.</li>
-</ul>
-<h2 id="environment">Environment</h2>
-<ul>
-<li>Proxmox Host (static): <strong>192.168.1.10</strong></li>
-<li>Debian VPN server (LXC, attempt 1): <strong>192.168.1.20</strong></li>
-<li>Router/Gateway: <strong>192.168.1.1</strong></li>
-<li>LAN: <strong>192.168.1.0/24</strong></li>
-<li>WireGuard subnet: <strong>10.8.0.0/24</strong></li>
-<li>Port forward: <strong>UDP 51820 → 192.168.1.20</strong></li>
-<li>Public IPv4 present; PVE firewall disabled for tests.</li>
-</ul>
-<h2 id="architecture-proxmox-lxc-wireguard-setup">🏗 Architecture – Proxmox LXC WireGuard Setup</h2>
-<p>Here is the network flow for my initial WireGuard setup using a Debian LXC on Proxmox:</p>
-<p><img alt="WireGuard Architecture – Proxmox LXC" src="../../../assets/homelab/Home_Lab.png" width="50%" /></p>
-<h2 id="key-configs-lxc-attempt">Key Configs (LXC Attempt)</h2>
-<p>Server /etc/wireguard/wg0.conf (minimal, IPv4):</p>
-<p>[Interface]
-Address    = 10.8.0.1/24
-ListenPort = 51820
-PrivateKey = <server_private_key>
-PostUp   = iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-PostDown = iptables -t nat -D POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE</p>
-<p>[Peer]  # au-phone
-PublicKey = <au_phone_public>
-AllowedIPs = 10.8.0.2/32
-PersistentKeepalive = 25</p>
-<p>[Peer]  # au-worklaptop
-PublicKey = <au_worklaptop_public>
-AllowedIPs = 10.8.0.3/32
-PersistentKeepalive = 25</p>
-<h2 id="client-template-androidlaptop">Client template (Android/Laptop):</h2>
-<p>[Interface]
-PrivateKey = <client_private>
-Address = 10.8.0.2/32
-DNS = 1.1.1.1</p>
-<p>[Peer]
-PublicKey = <server_public>
-Endpoint = <PUBLIC_IP>:51820
-AllowedIPs = 0.0.0.0/0, ::/0
-PersistentKeepalive = 25</p>
-<h2 id="troubleshooting-highlights">Troubleshooting Highlights</h2>
-<p>Verified: ss -lunp | grep 51820 (WG listening), sysctl net.ipv4.ip_forward=1, MASQUERADE present, router port forward correct, public IPv4 present, PVE firewall disabled.</p>
-<p>tcpdump path checks:</p>
-<p>Host vmbr0: check UDP/51820 arrives from WAN.</p>
-<p>Host veth104i0: check forwarding into the CT.</p>
-<p>Inside LXC eth0: check packets inside CT.</p>
-<p>Outcome: no reliable handshake at the CT boundary → containerization/kernel/capability constraints, not WG config.</p>
-<h2 id="root-cause">Root Cause</h2>
-<p>Running a WG server inside LXC adds kernel/capability hurdles (module loading, /dev/net/tun, CAP_NET_ADMIN, AppArmor/cgroup constraints, bridge/veth path). Result: handshakes fail despite correct configs.</p>
-<h2 id="decision">Decision</h2>
-<p>Migrate WG server to a Debian VM on Proxmox (full kernel control, simpler routing/NAT, production-like).</p>
-<p><strong>Status:</strong> Failed Approach - Moving to OPNsense </p>
+<h1 id="wireguard-vpn-setup-on-debian-vm">🔐 WireGuard VPN Setup on Debian VM</h1>
+<p>A documentation of my attempt to set up WireGuard VPN on a Debian VM, the challenges I encountered, and why I'm moving to an OPNsense-based solution.</p>
+<hr />
+<h2 id="overview">Overview</h2>
+<p><strong>Goal:</strong> Set up a WireGuard VPN to securely access my home network from anywhere.</p>
+<p><strong>Environment:</strong>
+- Proxmox Host (static): <strong>192.168.1.10</strong>
+- Debian VPN server (LXC, attempt 1): <strong>192.168.1.171</strong>
+- Home network with dynamic IPv6
+- Mobile and laptop clients</p>
+<p><strong>Outcome:</strong> Approach failed due to ISP router limitations. Switching to OPNsense firewall solution.</p>
+<hr />
+<h2 id="system-architecture-attempted">System Architecture (Attempted)</h2>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Internet
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>   │
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>   └─ ISP Router (192.168.1.1)
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        ├─ Proxmox Host
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>        │    └─ Debian VM (192.168.1.171)
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        │         └─ WireGuard Server (port 51820)
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        │
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        └─ Clients (mobile, laptop)
+</span></code></pre></div>
+<hr />
+<h2 id="setup-process">Setup Process</h2>
+<h3 id="1-install-wireguard">1. Install WireGuard</h3>
+<p>On the Debian VM:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>upgrade<span class="w"> </span>-y
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>wireguard<span class="w"> </span>wireguard-tools<span class="w"> </span>curl<span class="w"> </span>-y
+</span></code></pre></div>
+<h3 id="2-enable-ip-forwarding">2. Enable IP Forwarding</h3>
+<p>Create <code>/etc/sysctl.d/99-sysctl.conf</code> and add:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="na">net.ipv4.ip_forward</span><span class="o">=</span><span class="s">1</span>
+</span></code></pre></div>
+<p>Apply with:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>--system
+</span></code></pre></div></p>
+<h3 id="3-generate-keys">3. Generate Keys</h3>
+<p>For the server and each client:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>/etc/wireguard
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>sudo<span class="w"> </span><span class="nb">umask</span><span class="w"> </span><span class="m">077</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># Server keys</span>
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sudo<span class="w"> </span>wg<span class="w"> </span>genkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>server_private.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>wg<span class="w"> </span>pubkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>server_public.key
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
+</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># Mobile client keys</span>
+</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>sudo<span class="w"> </span>wg<span class="w"> </span>genkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>mobile_private.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>wg<span class="w"> </span>pubkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>mobile_public.key
+</span></code></pre></div>
+<h3 id="4-configure-the-server">4. Configure the Server</h3>
+<p>Create <code>/etc/wireguard/wg0.conf</code>:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">[Interface]</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="na">PrivateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;SERVER_PRIVATE_KEY&gt;</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="na">Address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10.8.0.1/24</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="na">ListenPort</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">51820</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># NAT rules - replace ens18 with your interface name</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="na">PostUp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">iptables -A FORWARD -i %i -j ACCEPT</span><span class="c1">; iptables -A FORWARD -o %i -j ACCEPT; iptables -t nat -A POSTROUTING -o ens18 -j MASQUERADE</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="na">PostDown</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">iptables -D FORWARD -i %i -j ACCEPT</span><span class="c1">; iptables -D FORWARD -o %i -j ACCEPT; iptables -t nat -D POSTROUTING -o ens18 -j MASQUERADE</span>
+</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="na">[Peer]    # Mobile Client</span>
+</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="na">PublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;MOBILE_PUBLIC_KEY&gt;</span>
+</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="na">AllowedIPs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10.8.0.2/32</span>
+</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="na">PersistentKeepalive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">25</span>
+</span></code></pre></div>
+<p>Start WireGuard:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>wg-quick@wg0
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>wg-quick@wg0
+</span></code></pre></div></p>
+<h3 id="5-configure-firewall">5. Configure Firewall</h3>
+<p>Set up UFW to allow WireGuard:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">22</span>/tcp<span class="w">      </span><span class="c1"># SSH</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>ufw<span class="w"> </span>allow<span class="w"> </span><span class="m">51820</span>/udp<span class="w">   </span><span class="c1"># WireGuard</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>ufw<span class="w"> </span><span class="nb">enable</span>
+</span></code></pre></div>
+<h3 id="6-configure-clients">6. Configure Clients</h3>
+<p><strong>Mobile (Android):</strong></p>
+<p>Create a config file:</p>
+<div class="language-ini highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">[Interface]</span>
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="na">PrivateKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;MOBILE_PRIVATE_KEY&gt;</span>
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="na">Address</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">10.8.0.2/32</span>
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="na">DNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1.1.1.1</span>
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="k">[Peer]</span>
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="na">PublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;SERVER_PUBLIC_KEY&gt;</span>
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="na">Endpoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&lt;YOUR_IPV6_OR_DOMAIN&gt;:51820</span>
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="na">AllowedIPs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">0.0.0.0/0</span>
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="na">PersistentKeepalive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">25</span>
+</span></code></pre></div>
+<p>Import into the WireGuard app (via QR code or manual entry).</p>
+<hr />
+<h2 id="the-challenges-i-faced">The Challenges I Faced</h2>
+<h3 id="challenge-1-router-firewall-blocking-vpn">Challenge 1: Router Firewall Blocking VPN</h3>
+<p><strong>The Problem:</strong>
+My router's firewall is set to "High" security mode, blocking all incoming VPN connections. While I <em>can</em> disable the firewall, <strong>I choose not to</strong> due to serious security implications (explained below).</p>
+<p><strong>What I Tried:</strong></p>
+<ol>
+<li><strong>Port Forwarding Configuration</strong></li>
+<li>Correctly set up UDP 51820 → 192.168.1.171</li>
+<li>
+<p>Verified multiple times, rebooted router</p>
+</li>
+<li>
+<p><strong>Firewall Security Levels</strong></p>
+</li>
+<li>Tried Medium and Low security settings</li>
+<li>
+<p>Still blocked incoming VPN traffic</p>
+</li>
+<li>
+<p><strong>Tested with Firewall Disabled</strong></p>
+</li>
+<li>Temporarily disabled firewall to test</li>
+<li>VPN worked perfectly during this time</li>
+</ol>
+<h3 id="challenge-2-ipv6-duckdns-approach">Challenge 2: IPv6 + DuckDNS Approach</h3>
+<p><strong>The Attempt:</strong>
+I noticed that my ISP is providing IPV6 address (public) and this gets updated after a certain period of time, hence I tried using IPv6 with DuckDNS for dynamic DNS.</p>
+<p>Here I learnt the concept of CGNAT and why does ISPs use this.</p>
+<p><em>Brief Info (Please skip if you already knew this)
+</em><em>What is CGNAT?</em><em>
+Carrier-Grade NAT is a technique ISPs use when they run out of public IPv4 addresses. Instead of giving each customer a unique public IP, they share one public IP among many customers.
+</em><em>Why ISPs Use It:</em><em>
+- IPv4 address exhaustion (not enough IPs for everyone)</em></p>
+<p><strong>DuckDNS Setup:</strong></p>
+<p>DuckDNS is a free service that gives you a permanent domain name that automatically updates to point to your current IP.</p>
+<p>Setup on server:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>mkdir<span class="w"> </span>~/duckdns
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">cd</span><span class="w"> </span>~/duckdns
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>nano<span class="w"> </span>duck.sh
+</span></code></pre></div>
+<p>Script content:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash</span>
+</span><span id="__span-10-2"><a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">IPV6</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-6<span class="w"> </span>-s<span class="w"> </span>ifconfig.me<span class="k">)</span>
+</span><span id="__span-10-3"><a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">url</span><span class="o">=</span><span class="s2">&quot;https://www.duckdns.org/update?domains=YOUR-SUBDOMAIN&amp;token=YOUR-TOKEN&amp;ipv6=</span><span class="nv">$IPV6</span><span class="s2">&amp;clear=true&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>curl<span class="w"> </span>-k<span class="w"> </span>-o<span class="w"> </span>~/duckdns/duck.log<span class="w"> </span>-K<span class="w"> </span>-
+</span></code></pre></div></p>
+<p><strong>Important:</strong> The <code>&amp;clear=true</code> parameter removes the IPv4 address from DNS, forcing clients to use IPv6 only.</p>
+<p>Set to auto-update every 5 minutes:
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>duck.sh
+</span><span id="__span-11-2"><a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>crontab<span class="w"> </span>-e
+</span></code></pre></div></p>
+<p>Add:
+<div class="language-text highlight"><pre><span></span><code><span id="__span-12-1"><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>*/5 * * * * ~/duckdns/duck.sh &gt;/dev/null 2&gt;&amp;1
+</span></code></pre></div></p>
+<p><strong>Cron Syntax Explained:</strong>
+- <code>*/5</code> = Every 5 minutes
+- <code>* * * *</code> = Every hour, day, month, and day of week
+- <code>&gt;/dev/null 2&gt;&amp;1</code> = Discard output to avoid email spam</p>
+<p><strong>Why This Failed:</strong></p>
+<p>Despite having IPv6 and DuckDNS configured:
+- VPN worked when firewall was disabled (testing only)
+- With firewall re-enabled at any security level, all connections blocked
+- <strong>The router's firewall blocks incoming traffic regardless of IPv4 or IPv6</strong>
+- DuckDNS correctly updated addresses, but traffic never reached my server</p>
+<p><strong>Lesson Learned:</strong> IPv6 bypasses NAT/port forwarding complexity, but it doesn't bypass firewall rules. Whether using IPv4 or IPv6, if the firewall blocks incoming connections on port 51820, the VPN won't work.</p>
+<hr />
+<p><strong>The Core Problem:</strong> While I <em>could</em> disable the router's firewall to make VPN work, I'm <strong>unwilling to compromise security</strong>. I need a solution that provides both VPN access and proper network protection.</p>
+<hr />
+<h2 id="the-solution-moving-to-opnsense">The Solution: Moving to OPNsense</h2>
+<h3 id="why-opnsense">Why OPNsense?</h3>
+<p>Since I choose not to disable the router's firewall for security reasons, I need to place my own firewall/router <strong>in front</strong> of my network that I have full control over - one that can properly allow VPN traffic while maintaining security.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>While the WireGuard setup on Debian VM was technically sound, <strong>the router's firewall blocking incoming connections made it unviable</strong> without disabling security features. Since I'm unwilling to compromise network security by disabling the firewall, I need a better architectural solution.</p>
+<p>This experience taught me valuable lessons about network architecture, ISP limitations, and the importance of proper infrastructure. The time spent troubleshooting wasn't wasted - understanding <em>why</em> this approach failed will inform better decisions in the OPNsense implementation.</p>
+<hr />
+<p><strong>Status:</strong> Failed Approach - Moving to OPNsense  </p>
 
 
 
