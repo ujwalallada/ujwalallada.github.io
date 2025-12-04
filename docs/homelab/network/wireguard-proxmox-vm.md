@@ -155,7 +155,15 @@ My router's firewall is set to "High" security mode, blocking all incoming VPN c
 ### Challenge 2: IPv6 + DuckDNS Approach
 
 **The Attempt:**
-Since IPv6 doesn't require port forwarding (your device gets a real public address), I tried using IPv6 with DuckDNS for dynamic DNS.
+I noticed that my ISP is providing IPV6 address (public) and this gets updated after a certain period of time, hence I tried using IPv6 with DuckDNS for dynamic DNS.
+
+Here I learnt the concept of CGNAT and why does ISPs use this.
+
+*Brief Info (Please skip if you already knew this)
+**What is CGNAT?**
+Carrier-Grade NAT is a technique ISPs use when they run out of public IPv4 addresses. Instead of giving each customer a unique public IP, they share one public IP among many customers.
+**Why ISPs Use It:**
+- IPv4 address exhaustion (not enough IPs for everyone)*
 
 **DuckDNS Setup:**
 
@@ -206,17 +214,6 @@ Despite having IPv6 and DuckDNS configured:
 
 ---
 
-## Why This Approach Failed
-
-### Summary of Blockers
-
-| Issue | Impact | Possible Solution |
-|-------|--------|-------------------|
-| Router firewall blocks VPN | Cannot allow incoming connections | ❌ Could disable, but security risk |
-| CGNAT | IPv4 port forwarding difficult | ✅ Use IPv6 (but still blocked by firewall) |
-| Firewall blocks all incoming | Both IPv4 and IPv6 blocked | ❌ Need firewall control |
-| Dynamic IPs | Config breaks frequently | ✅ DuckDNS (works but doesn't solve firewall) |
-
 **The Core Problem:** While I *could* disable the router's firewall to make VPN work, I'm **unwilling to compromise security**. I need a solution that provides both VPN access and proper network protection.
 
 ---
@@ -227,107 +224,9 @@ Despite having IPv6 and DuckDNS configured:
 
 Since I choose not to disable the router's firewall for security reasons, I need to place my own firewall/router **in front** of my network that I have full control over - one that can properly allow VPN traffic while maintaining security.
 
-### Technical Lessons
-
-✅ **WireGuard setup itself works** - My configuration was correct  
-✅ **DuckDNS handles dynamic IPs** - Useful for any future setup  
-✅ **IPv6 bypasses CGNAT** - But not firewall restrictions  
-❌ **Cannot fix ISP router limitations** - Need different approach  
-❌ **IPv4 port forwarding fails with CGNAT** - Common ISP limitation  
-
-
-
-### Understanding CGNAT
-
-**What is CGNAT?**
-Carrier-Grade NAT is a technique ISPs use when they run out of public IPv4 addresses. Instead of giving each customer a unique public IP, they share one public IP among many customers.
-
-**Analogy:**
-Think of it like an apartment building:
-- **Normal setup:** Your house has its own street address (public IP)
-- **CGNAT:** You live in apartment #5 in a building. The building has one street address (ISP's public IP), and mail is sorted internally.
-
-**Why ISPs Use It:**
-- IPv4 address exhaustion (not enough IPs for everyone)
-- Cost savings (public IPs are expensive)
-- Network management and control
-
-**How to Detect:**
-```bash
-# Your router's WAN IP (check in router web interface)
-WAN IP: 100.64.15.42  # Private range = definitely CGNAT
-
-# vs. what internet sees
-curl ifconfig.me
-72.136.107.72  # Different = CGNAT
-```
-
-**Impact on VPN:**
-- ✅ Outbound connections work fine (you can connect to other VPNs)
-- ❌ Inbound connections impossible (can't host your own VPN)
-- ❌ Port forwarding doesn't work
-- ❌ Running any server from home blocked
-
-**Solutions:**
-1. Ask ISP for a "public IP" (often costs extra)
-2. Switch ISPs (not always possible)
-3. Use IPv6 (no CGNAT, but may still have firewall issues)
-4. Use VPS relay (tunnel through cloud server)
-5. Use proper edge firewall like OPNsense in bridge mode
-
----
-
-## Useful Commands for Future Reference
-
-**Check if VPN is working:**
-```bash
-# On server
-sudo wg show
-# Should show connected peers with recent handshakes
-```
-
-**Monitor connections:**
-```bash
-# Watch for incoming VPN packets
-sudo tcpdump -i ens18 udp port 51820 -n
-
-# Watch decrypted VPN traffic
-sudo tcpdump -i wg0 -n
-```
-
-**Verify your current IPs:**
-```bash
-curl -6 ifconfig.me  # IPv6
-curl -4 ifconfig.me  # IPv4
-```
-
-**Check for CGNAT:**
-```bash
-curl ifconfig.me
-# Compare with router WAN IP in web interface
-# Different = CGNAT
-```
-
-**Test port forwarding:**
-```bash
-# From external network
-nc -zvu YOUR_PUBLIC_IP 51820
-# Should see "succeeded" if port is open
-```
-
-
----
-
 ## Conclusion
 
 While the WireGuard setup on Debian VM was technically sound, **the router's firewall blocking incoming connections made it unviable** without disabling security features. Since I'm unwilling to compromise network security by disabling the firewall, I need a better architectural solution.
-
-**Moving to OPNsense** provides:
-- ✅ Full control over network edge
-- ✅ Proper firewall capabilities
-- ✅ Professional-grade features
-- ✅ Sustainable long-term solution
-- ✅ No security compromises
 
 This experience taught me valuable lessons about network architecture, ISP limitations, and the importance of proper infrastructure. The time spent troubleshooting wasn't wasted - understanding *why* this approach failed will inform better decisions in the OPNsense implementation.
 
