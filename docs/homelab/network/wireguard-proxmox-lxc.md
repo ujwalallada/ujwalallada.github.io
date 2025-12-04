@@ -1,4 +1,4 @@
-# 🔐 Homelab Remote Access using Proxmox + WireGuard (LXC Attempt)
+# 🔐 WireGuard VPN Setup on Debian Container (LXC Attempt)
 
 > Portfolio documentation: objective, architecture, configs, troubleshooting, root-cause, and final decision to move WG server from LXC → Debian VM.
 

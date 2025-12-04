@@ -1,27 +1,109 @@
 site_name: auXploit Writes
+site_description: Homelab projects and CTF writeups by Ujwal Allada
+site_author: Ujwal Allada
+repo_url: https://github.com/ujwalallada/ujwalallada.github.io
+repo_name: ujwalallada
+
 theme:
   name: material
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
-    - navigation.instant
+    - navigation.tabs
     - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - navigation.indexes
+    - toc.follow
+    - toc.integrate
+    - search.suggest
+    - search.highlight
     - content.code.copy
-markdown_extensions:
-  - admonition
-  - toc:
-      permalink: true
-  - pymdownx.superfences
-  - pymdownx.details
-  - pymdownx.tabbed
-  - pymdownx.highlight
-  - pymdownx.tasklist
-  - attr_list
-
-# Mermaid support (Material works fine with this)
-extra_javascript:
-  - https://unpkg.com/mermaid@10/dist/mermaid.min.js
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
 
 nav:
   - Home: index.md
+  
   - Homelab:
-      - "WireGuard on Proxmox (LXC attempt → VM plan)": writeups/wireguard-proxmox-container.md
+      - homelab/index.md
+      - Secure Remote Management of Proxmox Using VPN:
+          - WireGuard on Proxmox (LXC): homelab/network/wireguard-proxmox-lxc.md
+          - WireGuard on Proxmox Debian VM: homelab/network/wireguard-proxmox-vm.md
+      # Future sections (uncomment when ready):
+      # - Infrastructure:
+      #     - Proxmox Setup: homelab/infrastructure/proxmox-baseline.md
+      # - Services:
+      #     - Reverse Proxy: homelab/services/reverse-proxy.md
+  
+  - CTF Writeups:
+      - ctf/index.md
+      # Add individual challenges here as you write them:
+      # - Challenge Name: ctf/challenge-1.md
 
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - footnotes
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"/]+|(?!\b)(?=[A-Z][a-z])|\.(?!\d)|&[lg]t;'
+  - tags
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ujwalallada
+      name: GitHub Profile
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/ujwalallada
+      name: LinkedIn Profile
+
+extra_css:
+  - stylesheets/extra.css
+
+# Copyright footer
+copyright: Copyright &copy; 2024 Ujwal Allada
